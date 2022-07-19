@@ -3,6 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+class CatalogModel {
+  static List<Item> items=[];
+}
+
 class Item {
   final int id;
   final String name;
@@ -50,8 +54,6 @@ class Item {
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
-    
-
     return Item(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -93,17 +95,4 @@ class Item {
         color.hashCode ^
         image.hashCode;
   }
-}
-
-class CatalogModel {
-  static List<Item> items = [
-    Item(
-        id: 1,
-        name: "Iphone 12 Pro",
-        desc: "12th Generation",
-        price: 999,
-        color: "#33505a",
-        image:
-            "https://img1.gadgetsnow.com/gd/images/products/additional/large/G201746_View_1/mobiles/smartphones/apple-iphone-12-pro-128-gb-pacific-blue-6-gb-ram-.jpg"),
-  ];
 }
