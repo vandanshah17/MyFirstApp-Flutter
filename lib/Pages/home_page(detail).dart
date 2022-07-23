@@ -17,29 +17,32 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         
-        backgroundColor: Vx.blue800,
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      backgroundColor: MyTheme.cream,
-      bottomNavigationBar: ButtonBar(
-        alignment: MainAxisAlignment.spaceBetween,
-        buttonPadding: EdgeInsets.zero,
-        children: [
-          "\$${catalog.price}".text.bold.xl4.blue800.make(),
-          ElevatedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                Vx.blue800,
+      backgroundColor: context.canvasColor,
+      bottomNavigationBar: Container(
+        color: context.cardColor,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          buttonPadding: EdgeInsets.zero,
+          children: [
+            "\$${catalog.price}".text.bold.xl4.color(context.theme.buttonColor).make(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  context.theme.buttonColor,
+                  ),
+                shape: MaterialStateProperty.all(
+                  StadiumBorder(),
+                  )
                 ),
-              shape: MaterialStateProperty.all(
-                StadiumBorder(),
-                )
-              ),
-            child: "Add to cart".text.xl.make(),
-            ).wh(150.0, 50.0)
-          ],
-          ).p32(),
+              child: "Add to cart".text.xl.make(),
+              ).wh(150.0, 50.0)
+            ],
+            ).p32(),
+      ),
         
       body: SafeArea(
         bottom: false,
@@ -53,10 +56,10 @@ class HomeDetailPage extends StatelessWidget {
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(children: [ 
-                    catalog.name.text.xl2.color(Vx.blue800).bold.make(),
+                    catalog.name.text.xl2.color(context.primaryColor).bold.make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
                     "Sadipscing consetetur clita labore aliquyam clita justo justo duo, clita sed eirmod no amet sed stet sed, sanctus no eirmod."

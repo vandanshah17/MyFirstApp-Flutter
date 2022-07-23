@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: Form(
             key: formkey,
@@ -41,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "Welcome $name",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 21, 7, 147),
+                  color: context.primaryColor,
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
@@ -58,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         hintText: "Enter Username",
                         labelText: "Username",
+                        labelStyle: TextStyle(color: context.primaryColor) 
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -75,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         hintText: "Enter Password",
                         labelText: "Password",
+                        labelStyle: TextStyle(color: context.primaryColor)
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -93,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30.0,
               ),
               Material(
-                color: Colors.yellow,
+                color: context.theme.buttonColor,
                 borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
                 child: InkWell(
                   onTap: () => movetoHome(context),
@@ -110,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                         : Text(
                             "Login",
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),

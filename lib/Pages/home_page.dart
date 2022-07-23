@@ -43,9 +43,11 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(
             context, MyRoutes.cartRoute),
-          backgroundColor: MyTheme.orange,
-          child: Icon(CupertinoIcons.cart),),
-        backgroundColor: MyTheme.cream,
+          backgroundColor: context.theme.buttonColor,
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,),),
+        backgroundColor: context.canvasColor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
@@ -56,7 +58,9 @@ class _HomePageState extends State<HomePage> {
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                   CatalogList().py16().expand()
                 else
-                  CircularProgressIndicator().centered().expand(),
+                  CircularProgressIndicator(
+                    backgroundColor: context.canvasColor,
+                  ).centered().expand(),
                   
               ],
             ),
