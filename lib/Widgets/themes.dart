@@ -29,7 +29,9 @@ class MyTheme {
       appBarTheme: AppBarTheme(
           color: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
-          textTheme: Theme.of(context).textTheme));
+          textTheme: Theme.of(context).textTheme.copyWith(
+            headline6: context.textTheme.headline6!.copyWith(color: Colors.white),
+          )));
 
   static Color cream = Color(0xfff5f5f5);
   static Color dc = Vx.gray900;
