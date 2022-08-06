@@ -16,7 +16,9 @@ class MyTheme {
       appBarTheme: AppBarTheme(
           color: Colors.deepOrange,
           iconTheme: IconThemeData(color: orange),
-          textTheme: Theme.of(context).textTheme));
+          textTheme: Theme.of(context).textTheme.copyWith(
+              headline6:
+                  context.textTheme.headline6!.copyWith(color: orange))));
   static ThemeData darkTheme(BuildContext context) => ThemeData(
       primarySwatch: Colors.deepOrange,
       fontFamily: GoogleFonts.poppins().fontFamily,
@@ -30,8 +32,9 @@ class MyTheme {
           color: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
           textTheme: Theme.of(context).textTheme.copyWith(
-            headline6: context.textTheme.headline6!.copyWith(color: Colors.white),
-          )));
+                headline6:
+                    context.textTheme.headline6!.copyWith(color: Colors.white),
+              )));
 
   static Color cream = Color(0xfff5f5f5);
   static Color dc = Vx.gray900;
