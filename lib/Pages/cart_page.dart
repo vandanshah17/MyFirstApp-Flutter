@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/themes.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -25,7 +25,7 @@ class cartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
         height: 120,
         child: Row(
@@ -49,31 +49,25 @@ class cartTotal extends StatelessWidget {
   }
 }
 
-class cartList extends StatefulWidget {
-  const cartList({Key? key}) : super(key: key);
-
-  @override
-  State<cartList> createState() => _cartListState();
-}
-
-class _cartListState extends State<cartList> {
-  final _cart = CartModel();
+class cartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Nothing to show".text.xl3.makeCentered()
         : ListView.builder(
             itemCount: _cart.items.length,
             itemBuilder: (context, index) => ListTile(
-                  leading: Icon(Icons.done),
-                  trailing: IconButton(
-                    icon: Icon(Icons.remove_circle_outline),
-                    onPressed: (() {
-                      _cart.remove(_cart.items[index]);
-                      setState(() {});
-                    }),
-                  ),
-                  title: _cart.items[index].name.text.make(),
-                ));
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  // setState(() {});
+                },
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }

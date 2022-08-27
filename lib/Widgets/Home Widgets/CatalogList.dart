@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/home_page(detail).dart';
 import 'package:flutter_application_1/Widgets/Home%20Widgets/CatalogImage.dart';
-import 'package:flutter_application_1/Widgets/themes.dart';
-import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -62,7 +60,7 @@ class CatalogItem extends StatelessWidget {
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalog.price}".text.bold.xl.make(),
-                  AddtoCart(catalog: catalog)
+                  AddtoCart(catalog: catalog, key: null,)
                 ],
               ).pOnly(right: 4.0)
             ],
